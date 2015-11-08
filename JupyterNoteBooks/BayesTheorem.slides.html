@@ -223,7 +223,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bayes-Theorem">Bayes Theorem<a class="anchor-link" href="#Bayes-Theorem">&#182;</a></h2><h3 id="Rohan-L.-Fernando">Rohan L. Fernando<a class="anchor-link" href="#Rohan-L.-Fernando">&#182;</a></h3><h3 id="June-2015">June 2015<a class="anchor-link" href="#June-2015">&#182;</a></h3>
+<h2 id="Bayes-Theorem">Bayes Theorem<a class="anchor-link" href="#Bayes-Theorem">&#182;</a></h2><h3 id="Rohan-L.-Fernando">Rohan L. Fernando<a class="anchor-link" href="#Rohan-L.-Fernando">&#182;</a></h3><h3 id="November-2015">November 2015<a class="anchor-link" href="#November-2015">&#182;</a></h3>
 </div>
 </div>
 </div></section>
@@ -235,15 +235,14 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>In whole-genome analyses, the number $k$ of marker covariates typically
-exceeds the number of $n$ of observations. In this situation, least
-squares methods cannot be used to simultaneously estimate the effects of
-all the $k$ marker covariates. One of the most widely used methods to
-overcome this problem is Bayesian inference, where prior information
-about marker effects is combined with the data to make inferences about
-the marker effects. In Bayesian inference, inferences are based on
+<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><ul>
+<li>In whole-genome analyses, the number $k$ of marker covariates typically exceeds the number $n$ of observations </li>
+<li>Cannot use least squares methods  to simultaneously estimate the effects of all the $k$ covariates</li>
+<li>Bayesian inference is widely used to overcome this problem by combining prior information with the observed data</li>
+<li>In the Bayesian approach, inferences are based on
 conditional probabilities, and the Bayes theorem is a statement on
-conditional probability.</p>
+conditional probability</li>
+</ul>
 
 </div>
 </div>
@@ -286,20 +285,20 @@ $Y.$</p>
 smoking and lung cancer in a hypothetical population of 1,000,000
 individuals.</p>
 $$
-\begin{array}{c|lcr}
+\begin{array}{c|lc|r}
+ & \text{Smoking} \\
+\hline 
 \text{Cancer} & \text{Yes} & \text{No} & \text{} \\
 \hline
 \text{Yes} & 42,500 & 7,500 & 50,000 \\
 \text{No}  & 207,500 & 742,500 & 950,000 \\
- & 250,000 & 750,000 
+\hline 
+ & 250,000 & 750,000 & 1,000,000
 \end{array}
-$$<p>Given these numbers, consider how you would compute the relative
-frequency of lung cancer among smokers. There are a total of 250,000
-smokers in this population, and among these 250,000 individuals, 42,500
-have lung cancer. So, relative frequency of lung cancer among smokers is
-$\frac{42,500}{250,000}$. As we reason below, this relative frequency is
-also the conditional probability of lung cancer given the individual is
-a smoker.</p>
+$$<ul>
+<li>Given these numbers, consider how you would compute the relative
+  frequency of lung cancer among smokers</li>
+</ul>
 
 </div>
 </div>
@@ -310,26 +309,98 @@ a smoker.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ol>
-<li><p>The frequentist definition of probability of an event is the
-limiting value of its relative frequency in a “large” number of
-trials.</p>
-</li>
+<ul>
+<li>There are a total of 250,000 smokers in this population, and among these 250,000 individuals, 42,500
+  have lung cancer</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="5">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>So, relative frequency of lung cancer among smokers is
+  $\frac{42,500}{250,000}$</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="6">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>As we reason next, this relative frequency is also the conditional probability of lung cancer given the 
+  individual  is a smoker</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="7">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The frequentist definition of probability of an event is the
+ limiting value of its relative frequency in a “large” number of
+ trials.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="8">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
 <li><p>Suppose we sample with replacement individuals from the 250,000
-smokers and compute the relative frequency of the incidence of lung
-cancer.</p>
+ smokers and compute the relative frequency of the incidence of lung
+ cancer.</p>
 </li>
 <li><p>It can be shown that as the sample size goes to infinity, this
-relative frequency will approach $\frac{42,500}{250,000}=0.17$.</p>
+ relative frequency will approach $\frac{42,500}{250,000}=0.17$.</p>
 </li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="9">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
 <li><p>This ratio can also be written as
-$$\frac{42,500/1,000,000}{250,000/1,000,000}=0.17.$$</p>
+ $$\frac{42,500/1,000,000}{250,000/1,000,000}=0.17.$$</p>
 </li>
 <li><p>The ratio in the numerator is the joint probability of smoking and
-lung cancer, and the ratio in the denominator is the marginal
-probability of smoking.</p>
+ lung cancer, and the ratio in the denominator is the marginal
+ probability of smoking.</p>
 </li>
-</ol>
+<li><p>So, $$\Pr(X|Y)  = \frac{\Pr(X,Y)}{\Pr(Y)} $$</p>
+</li>
+</ul>
 
 </div>
 </div>
@@ -338,7 +409,7 @@ probability of smoking.</p>
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span class="p">;</span><span class="n">ipython</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">slides</span> <span class="n">BayesTheorem</span><span class="o">.</span><span class="n">ipynb</span>
@@ -355,7 +426,7 @@ probability of smoking.</p>
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>[NbConvertApp] Converting notebook BayesTheorem.ipynb to slides
-[NbConvertApp] Writing 196412 bytes to BayesTheorem.slides.html
+[NbConvertApp] Writing 197689 bytes to BayesTheorem.slides.html
 </pre>
 </div>
 </div>
