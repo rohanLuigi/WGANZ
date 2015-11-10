@@ -1,0 +1,25 @@
+nParm = nLoci + 1
+betas = fill (0.0,nParm)
+nSamples = 20000
+betasave = fill(0.0,nParm,nSamples)
+
+for (iter in 1:nSamples)
+    for (parm in 1:nParm)
+        betas[parm] = 0.0
+        ystar = y - X * betas
+        ThisX = X[:,parm]
+        XPX = (ThisX'ThisX)[1]
+        XPY = ThisX'ystar
+        bhat = (XPY/XPX)[1]
+        sdbhat = resStd/sqrt(XPX)
+        betas[parm] = rand(Normal(bhat,sdbhat)) # default 1
+    end
+    betasave[:,iter] = betas
+end
+
+#println()
+  if @printf "%10d %8.2f %8.2f \n" iter betas[1] betas[2] betas[[3] betas[4]
+println("Gibbs Variane-Covariance",cov(betasave'), )
+println(resStd^2*inv(X'X))
+println(mean(betasave,2))
+println(inv(X'X)*X'y)
